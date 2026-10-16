@@ -136,7 +136,29 @@ def chunk_text(text: str, doc_id: str, size: int = 200, overlap: int = 50) -> li
     讲义第三节 ①
     """
     # TODO 1: 在这里写你的实现
-    raise NotImplementedError("TODO 1 还没写")
+    if not text or not text.strip():
+        return []
+    if overlap >= size:
+        raise ValueError(f"overlap({overlap}) 必须小于 size({size})")
+
+    cleaned = re.sub(r"\n\s*\n+", "\n", text.strip())
+    cleaned = re.sub(r"[ \t]+", " ", cleaned)
+
+    step = size - overlap
+    chunks = []
+    start = 0
+    idx = 0
+    while start < len(cleaned):
+        piece = cleaned[start:start + size].strip()
+        if piece:
+            chunks.append({
+                "doc_id": doc_id,
+                "chunk_id": f"{doc_id}#{idx}",
+                "text": piece,
+            })
+            idx += 1
+        start += step
+    return chunks
 
 
 # ============================================================
