@@ -1,0 +1,19 @@
+add: 读代码.py 工具 + 逐行读懂-chunk_text.md
+
+用户需求：「vscode上有没有选中阅读的插件？有些英文名的函数我不会念」
+
+诊断：他的真实痛点不是「朗读代码」，是「不认识函数名的英文单词」。
+装 TTS 插件会念成 i-f-not-text-colon 这种，帮助有限。
+
+方案两件：
+
+1. 逐行读懂-chunk_text.md —— 把 chunk_text 拆到每个符号
+   def / return / 方括号 / 花括号 / append / 切片 / or 短路
+   不假设认识任何东西；含概念到函数的对照表 + 开卷考试类比
+
+2. 读代码.py —— 输入函数名，自动：
+   - 拆词：chunk_text 拆成 chunk 和 text；cosineSimilarity 同理
+   - 调 Windows 自带语音念出来（已验证 Zira 英文语音可用，无需装插件）
+   - 打印每个词的中文含义（词库约 200 词，覆盖 Python 词根 + RAG 术语）
+
+另附 VS Code 方案：Read Aloud 扩展，选中后快捷键朗读
