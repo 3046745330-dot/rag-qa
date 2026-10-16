@@ -24,10 +24,18 @@ MENU = """
                    学习工具台
 ============================================================
 
+  【看代码】
   [1] 看数据长什么样      可视化 chunk_text 的执行过程
-  [2] 查代码英文读法      输入函数名，看读法和中文意思
-  [3] 跑 RAG 第 01 课验收  检查你的 TODO 写得对不对
-  [4] 打开讲义（第 01 课）  用记事本打开讲义的文本版
+  [2] 逐个符号验算        用真实数字演示 != len raise f"" zip sum 等
+  [3] 五个函数的数据流    看清「卡片是文字、向量是数字」
+  [4] 角度 vs 距离        为什么 RAG 用余弦相似度而不是欧氏距离
+
+  【查与测】
+  [5] 查代码英文读法      输入函数名，看读法和中文意思
+  [6] 跑 RAG 第 01 课验收  检查你的 TODO 写得对不对
+
+  【文档】
+  [7] 打开逐行讲解        用记事本打开 chunk_text 的逐符号讲解
 
   [0] 退出
 
@@ -69,6 +77,24 @@ def main():
 
         elif choice == "2":
             print("\n" + "=" * 60)
+            print("逐个符号验算 —— 用真实数字演示每个符号")
+            print("=" * 60 + "\n")
+            run_script("yan-suan.py")
+
+        elif choice == "3":
+            print("\n" + "=" * 60)
+            print("五个函数的数据流 —— 卡片是文字，向量是数字")
+            print("=" * 60 + "\n")
+            run_script("wu-bu.py")
+
+        elif choice == "4":
+            print("\n" + "=" * 60)
+            print("角度 vs 距离 —— 为什么用余弦相似度")
+            print("=" * 60 + "\n")
+            run_script("jiao-du-vs-ju-li.py")
+
+        elif choice == "5":
+            print("\n" + "=" * 60)
             print("查代码英文读法")
             print("=" * 60)
             print("\n可以直接打函数名（空格分隔多个），例如：")
@@ -82,14 +108,13 @@ def main():
             if line:
                 run_script("du-daima.py", line.split())
 
-        elif choice == "3":
+        elif choice == "6":
             print("\n" + "=" * 60)
             print("RAG 第 01 课验收（8 项检查）")
             print("=" * 60 + "\n")
             run_script(os.path.join("验收", "check_hw01.py"))
 
-        elif choice == "4":
-            # 用系统默认程序打开讲义
+        elif choice == "7":
             doc = os.path.join(HERE, "逐行读懂-chunk_text.md")
             if os.path.exists(doc):
                 print(f"\n正在打开：{doc}")
