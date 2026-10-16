@@ -1,0 +1,496 @@
+{
+  "version": "2.0",
+  "description": "校园问答 RAG 评测黄金集。每题的答案已在源文档中验证存在。难度分层：easy/trap/buried/multi。",
+  "total": 48,
+  "types": {
+    "easy": 6,
+    "trap": 17,
+    "buried": 14,
+    "multi": 11
+  },
+  "items": [
+    {
+      "id": "q01",
+      "question": "图书馆周末几点开门？",
+      "source_doc": "library-hours",
+      "must_contain": [
+        "09:00 - 21:00"
+      ],
+      "type": "easy",
+      "note": "周末时间明确写在第一段"
+    },
+    {
+      "id": "q02",
+      "question": "本科生一次最多能借几本书？",
+      "source_doc": "library-borrow",
+      "must_contain": [
+        "10 册"
+      ],
+      "type": "easy",
+      "note": "数字型答案"
+    },
+    {
+      "id": "q03",
+      "question": "图书借阅期限是多久？",
+      "source_doc": "library-borrow",
+      "must_contain": [
+        "30 天"
+      ],
+      "type": "easy",
+      "note": "注意本科生和研究生不同，容易答错对象"
+    },
+    {
+      "id": "q04",
+      "question": "校园网一个月多少钱？",
+      "source_doc": "network",
+      "must_contain": [
+        "20 元"
+      ],
+      "type": "easy",
+      "note": "清晰单值"
+    },
+    {
+      "id": "q05",
+      "question": "国家奖学金的金额是多少？",
+      "source_doc": "scholarship",
+      "must_contain": [
+        "8000"
+      ],
+      "type": "easy",
+      "note": "数字型"
+    },
+    {
+      "id": "q06",
+      "question": "图书馆开放时间是什么？",
+      "source_doc": "library-hours",
+      "must_contain": [
+        "08:00 - 22:00"
+      ],
+      "type": "trap",
+      "note": "干扰项：lab-hours.md 和 gym-hours.md 也讲「开放时间」，且标题都含「时间」"
+    },
+    {
+      "id": "q07",
+      "question": "实验室几点开门？",
+      "source_doc": "lab-hours",
+      "must_contain": [
+        "08:30-17:30"
+      ],
+      "type": "trap",
+      "note": "干扰项：library-hours.md 有更详细的时段表，向量检索容易误召回"
+    },
+    {
+      "id": "q08",
+      "question": "游泳馆什么时候开放？",
+      "source_doc": "gym-hours",
+      "must_contain": [
+        "14:00-21:00",
+        "周一闭馆"
+      ],
+      "type": "trap",
+      "note": "干扰项：同一文档里的羽毛球馆时间，容易混淆"
+    },
+    {
+      "id": "q09",
+      "question": "食堂早餐几点开始？",
+      "source_doc": "canteen",
+      "must_contain": [
+        "06:30"
+      ],
+      "type": "trap",
+      "note": "干扰项：三个食堂时间不同，答案是区间不是单值"
+    },
+    {
+      "id": "q10",
+      "question": "军训要多久？",
+      "source_doc": "freshman",
+      "must_contain": [
+        "两周"
+      ],
+      "type": "buried",
+      "note": "527 字的长文档，「关于军训」在小节倒数第二段。按固定长度切分容易切散"
+    },
+    {
+      "id": "q11",
+      "question": "学位英语还是硬性要求吗？",
+      "source_doc": "graduation",
+      "must_contain": [
+        "不再将学位英语"
+      ],
+      "type": "buried",
+      "note": "长文档末尾才有，前面全是学分和毕设要求"
+    },
+    {
+      "id": "q12",
+      "question": "宿舍晚上几点要求安静？",
+      "source_doc": "dorm-power",
+      "must_contain": [
+        "23:30"
+      ],
+      "type": "buried",
+      "note": "夹在第 3 条，前后是电费和大功率电器"
+    },
+    {
+      "id": "q13",
+      "question": "图书馆闭馆前多久停止借还书？",
+      "source_doc": "library-hours",
+      "must_contain": [
+        "30 分钟"
+      ],
+      "type": "multi",
+      "note": "需要从多个时段中提取出「闭馆前 30 分钟」这条通用规则"
+    },
+    {
+      "id": "q14",
+      "question": "校园卡丢了怎么办？",
+      "source_doc": "card",
+      "must_contain": [
+        "挂失",
+        "20 元"
+      ],
+      "type": "multi",
+      "note": "答案含两个要点，单句检索可能只捞到一半"
+    },
+    {
+      "id": "q15",
+      "question": "宿舍电费怎么交？",
+      "source_doc": "dorm-power",
+      "must_contain": [
+        "校园卡 APP"
+      ],
+      "type": "multi",
+      "note": "card.md 也提「校园卡充值」，存在混淆可能"
+    },
+    {
+      "id": "q16",
+      "question": "图书馆自习座位可以提前几天预约？",
+      "source_doc": "library-seat",
+      "must_contain": [
+        "3 天"
+      ],
+      "type": "buried",
+      "note": "library-seat.md 与 library-hours.md 主题相近，且这题答案藏在第二条"
+    },
+    {
+      "id": "q17",
+      "question": "考试作弊会怎么处理？",
+      "source_doc": "exam",
+      "must_contain": [
+        "留校察看",
+        "开除学籍"
+      ],
+      "type": "multi",
+      "note": "答案是两个并列后果"
+    },
+    {
+      "id": "q18",
+      "question": "校医院周末能看门诊吗？",
+      "source_doc": "medical",
+      "must_contain": [
+        "仅急诊"
+      ],
+      "type": "trap",
+      "note": "关键限定词是「仅急诊」，漏掉就会答错"
+    },
+    {
+      "id": "q19",
+      "question": "毕业设计查重率要求多少？",
+      "source_doc": "graduation",
+      "must_contain": [
+        "30%"
+      ],
+      "type": "buried",
+      "note": "长文档中部"
+    },
+    {
+      "id": "q20",
+      "question": "图书馆的书弄丢了怎么赔？",
+      "source_doc": "library-fine",
+      "must_contain": [
+        "原价"
+      ],
+      "type": "trap",
+      "note": "文档措辞是「图书遗失需按原价赔偿」，问法用的是「弄丢」。近义泛化测试"
+    },
+    {
+      "id": "q21",
+      "question": "在学校里打印一张纸多少钱？",
+      "source_doc": "print",
+      "must_contain": [
+        "0.10"
+      ],
+      "type": "trap",
+      "note": "文档措辞是「自助打印」，用户说的是「打印一张纸」。且 print.md 与 library-space.md 都提打印"
+    },
+    {
+      "id": "q22",
+      "question": "宿舍能用电饭锅吗？",
+      "source_doc": "dorm-safety",
+      "must_contain": [
+        "严禁"
+      ],
+      "type": "trap",
+      "note": "dorm-safety.md 和 dorm-power.md 都提大功率电器，构成同簇干扰"
+    },
+    {
+      "id": "q23",
+      "question": "心理健康咨询要花钱吗？",
+      "source_doc": "psych",
+      "must_contain": [
+        "免费"
+      ],
+      "type": "easy",
+      "note": "文档说「每次 50 分钟，免费」，问法是「要花钱吗」，需要语义反转理解"
+    },
+    {
+      "id": "q24",
+      "question": "成绩不满意能改吗？",
+      "source_doc": "course-grade",
+      "must_contain": [
+        "复议"
+      ],
+      "type": "trap",
+      "note": "文档用「成绩复议」，问法用「能改吗」。近义测试"
+    },
+    {
+      "id": "q25",
+      "question": "快递最多能放几天不取？",
+      "source_doc": "post",
+      "must_contain": [
+        "3 天"
+      ],
+      "type": "buried",
+      "note": "答案在 post.md 中段「超过 3 天未取的包裹将被退回」"
+    },
+    {
+      "id": "q26",
+      "question": "图书馆一共有几层？",
+      "source_doc": "library-space",
+      "must_contain": [
+        "6 层"
+      ],
+      "type": "trap",
+      "note": "图书馆相关的文档现在有 6 篇（library-*），干扰强"
+    },
+    {
+      "id": "q27",
+      "question": "知网能在校外访问吗？",
+      "source_doc": "library-database",
+      "must_contain": [
+        "VPN"
+      ],
+      "type": "trap",
+      "note": "library-database 与 library-space 都讲图书馆服务"
+    },
+    {
+      "id": "q28",
+      "question": "宿舍几点关门？",
+      "source_doc": "dorm-check",
+      "must_contain": [
+        "23:00"
+      ],
+      "type": "trap",
+      "note": "dorm-check 与 dorm-safety、dorm-power 主题相近，都含宿舍规定"
+    },
+    {
+      "id": "q29",
+      "question": "宿舍东西坏了找谁修？",
+      "source_doc": "dorm-facility",
+      "must_contain": [
+        "后勤"
+      ],
+      "type": "trap",
+      "note": "同簇干扰：4 篇 dorm-* 文档"
+    },
+    {
+      "id": "q30",
+      "question": "宿舍网口怎么用？",
+      "source_doc": "dorm-network",
+      "must_contain": [
+        "MAC"
+      ],
+      "type": "trap",
+      "note": "dorm-network 与 network.md（校园网）主题高度重叠，最难的干扰之一"
+    },
+    {
+      "id": "q31",
+      "question": "大功率电器被查到会怎么样？",
+      "source_doc": "dorm-safety",
+      "must_contain": [
+        "处分"
+      ],
+      "type": "multi",
+      "note": "dorm-safety 说处分，dorm-power 说没收并通报批评 —— 需要区分是哪一篇"
+    },
+    {
+      "id": "q32",
+      "question": "灭火器在哪？",
+      "source_doc": "dorm-safety",
+      "must_contain": [
+        "每层"
+      ],
+      "type": "buried",
+      "note": "答案在 dorm-safety.md 中段"
+    },
+    {
+      "id": "q33",
+      "question": "一门课多少人选不上会抽签？",
+      "source_doc": "course-select",
+      "must_contain": [
+        "抽签"
+      ],
+      "type": "trap",
+      "note": "course-select 讲选课机制"
+    },
+    {
+      "id": "q34",
+      "question": "绩点怎么算？",
+      "source_doc": "course-grade",
+      "must_contain": [
+        "学分"
+      ],
+      "type": "multi",
+      "note": "course-grade 的 GPA 公式含多个要素"
+    },
+    {
+      "id": "q35",
+      "question": "实验课缺课多少会挂？",
+      "source_doc": "course-practice",
+      "must_contain": [
+        "1/3"
+      ],
+      "type": "buried",
+      "note": "答案在 course-practice.md 第一段"
+    },
+    {
+      "id": "q36",
+      "question": "毕业设计成绩怎么构成的？",
+      "source_doc": "course-practice",
+      "must_contain": [
+        "40%"
+      ],
+      "type": "multi",
+      "note": "course-practice 末尾，含三个百分比。且 graduation.md 也讲毕业设计"
+    },
+    {
+      "id": "q37",
+      "question": "老师最多能调几次课？",
+      "source_doc": "course-teacher",
+      "must_contain": [
+        "3 次"
+      ],
+      "type": "buried",
+      "note": "course-teacher.md 中段"
+    },
+    {
+      "id": "q38",
+      "question": "在读证明要钱吗？",
+      "source_doc": "cert",
+      "must_contain": [
+        "免费"
+      ],
+      "type": "trap",
+      "note": "cert.md 里在读证明免费，但成绩单要钱 —— 混在一起容易答错"
+    },
+    {
+      "id": "q39",
+      "question": "有事请假最多能请几天？",
+      "source_doc": "leave",
+      "must_contain": [
+        "3 天"
+      ],
+      "type": "multi",
+      "note": "leave.md 有审批权限表，事假原则上不超 3 天"
+    },
+    {
+      "id": "q40",
+      "question": "转专业什么条件？",
+      "source_doc": "transfer",
+      "must_contain": [
+        "绩点"
+      ],
+      "type": "multi",
+      "note": "transfer.md 列了三个条件"
+    },
+    {
+      "id": "q41",
+      "question": "多久能申请入党？",
+      "source_doc": "party",
+      "must_contain": [
+        "18"
+      ],
+      "type": "buried",
+      "note": "party.md 第一段「年满 18 周岁」"
+    },
+    {
+      "id": "q42",
+      "question": "预备党员多久转正？",
+      "source_doc": "party",
+      "must_contain": [
+        "1 年"
+      ],
+      "type": "buried",
+      "note": "party.md 末尾"
+    },
+    {
+      "id": "q43",
+      "question": "食堂卡没钱了去哪充？",
+      "source_doc": "canteen-card",
+      "must_contain": [
+        "APP"
+      ],
+      "type": "trap",
+      "note": "canteen-card 与 card.md 都讲校园卡充值，强干扰"
+    },
+    {
+      "id": "q44",
+      "question": "用校园卡买东西一次最多花多少？",
+      "source_doc": "canteen-card",
+      "must_contain": [
+        "50 元"
+      ],
+      "type": "buried",
+      "note": "答案在消费限额段"
+    },
+    {
+      "id": "q45",
+      "question": "捡到东西交到哪？",
+      "source_doc": "lost",
+      "must_contain": [
+        "保卫处"
+      ],
+      "type": "multi",
+      "note": "lost.md 列了四个失物招领点"
+    },
+    {
+      "id": "q46",
+      "question": "体测不合格会怎么样？",
+      "source_doc": "sport",
+      "must_contain": [
+        "不能毕业"
+      ],
+      "type": "buried",
+      "note": "sport.md 中段，且用了加粗强调"
+    },
+    {
+      "id": "q47",
+      "question": "医保在校外看病能报销吗？",
+      "source_doc": "insurance",
+      "must_contain": [
+        "转诊"
+      ],
+      "type": "multi",
+      "note": "insurance.md 讲校外就医需转诊单"
+    },
+    {
+      "id": "q48",
+      "question": "校医院报销要多久到账？",
+      "source_doc": "insurance",
+      "must_contain": [
+        "15"
+      ],
+      "type": "buried",
+      "note": "insurance.md 末尾"
+    }
+  ]
+}

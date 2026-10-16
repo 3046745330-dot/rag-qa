@@ -1,0 +1,14 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# 密钥（绝对不推）
+.env
+.env.local
+*.key
+
+# 评测产物
+评测结果*.json
+*.log

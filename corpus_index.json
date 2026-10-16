@@ -1,0 +1,187 @@
+[
+  {
+    "id": "canteen-card",
+    "title": "食堂消费与校园卡充值",
+    "chars": 392
+  },
+  {
+    "id": "canteen",
+    "title": "食堂营业信息",
+    "chars": 229
+  },
+  {
+    "id": "card",
+    "title": "校园卡使用说明",
+    "chars": 222
+  },
+  {
+    "id": "cert",
+    "title": "各类证明办理指南",
+    "chars": 353
+  },
+  {
+    "id": "course-grade",
+    "title": "成绩考核与绩点计算",
+    "chars": 416
+  },
+  {
+    "id": "course-practice",
+    "title": "实践教学环节要求",
+    "chars": 347
+  },
+  {
+    "id": "course-select",
+    "title": "选课管理办法",
+    "chars": 294
+  },
+  {
+    "id": "course-teacher",
+    "title": "教师教学与答疑规范",
+    "chars": 295
+  },
+  {
+    "id": "dorm-check",
+    "title": "学生宿舍管理规定",
+    "chars": 341
+  },
+  {
+    "id": "dorm-facility",
+    "title": "宿舍设施报修流程",
+    "chars": 338
+  },
+  {
+    "id": "dorm-network",
+    "title": "宿舍区网络与信号说明",
+    "chars": 288
+  },
+  {
+    "id": "dorm-power",
+    "title": "宿舍用电规定",
+    "chars": 192
+  },
+  {
+    "id": "dorm-safety",
+    "title": "宿舍消防安全规定",
+    "chars": 305
+  },
+  {
+    "id": "exam",
+    "title": "考试与补考规定",
+    "chars": 205
+  },
+  {
+    "id": "freshman",
+    "title": "新生入学指南",
+    "chars": 527
+  },
+  {
+    "id": "graduation",
+    "title": "毕业与学位授予要求",
+    "chars": 403
+  },
+  {
+    "id": "gym-hours",
+    "title": "体育场馆开放时间",
+    "chars": 170
+  },
+  {
+    "id": "insurance",
+    "title": "学生医保与就医报销",
+    "chars": 331
+  },
+  {
+    "id": "lab-hours",
+    "title": "实验室开放时间",
+    "chars": 161
+  },
+  {
+    "id": "leave",
+    "title": "学生请假与考勤规定",
+    "chars": 326
+  },
+  {
+    "id": "library-borrow",
+    "title": "图书借阅规则",
+    "chars": 160
+  },
+  {
+    "id": "library-database",
+    "title": "电子资源与数据库使用",
+    "chars": 314
+  },
+  {
+    "id": "library-fine",
+    "title": "图书馆违规处理办法",
+    "chars": 264
+  },
+  {
+    "id": "library-hours",
+    "title": "图书馆开放时间",
+    "chars": 167
+  },
+  {
+    "id": "library-seat",
+    "title": "图书馆座位预约",
+    "chars": 179
+  },
+  {
+    "id": "library-space",
+    "title": "图书馆空间分布与服务",
+    "chars": 309
+  },
+  {
+    "id": "lost",
+    "title": "失物招领与物品遗失处理",
+    "chars": 331
+  },
+  {
+    "id": "medical",
+    "title": "校医院就诊指南",
+    "chars": 217
+  },
+  {
+    "id": "network",
+    "title": "校园网使用指南",
+    "chars": 226
+  },
+  {
+    "id": "party",
+    "title": "入党申请与发展流程",
+    "chars": 344
+  },
+  {
+    "id": "post",
+    "title": "快递与邮政服务",
+    "chars": 347
+  },
+  {
+    "id": "print",
+    "title": "自助打印与复印服务",
+    "chars": 352
+  },
+  {
+    "id": "psych",
+    "title": "心理健康服务",
+    "chars": 348
+  },
+  {
+    "id": "safety",
+    "title": "校园安全须知",
+    "chars": 360
+  },
+  {
+    "id": "scholarship",
+    "title": "奖学金评定",
+    "chars": 217
+  },
+  {
+    "id": "sport",
+    "title": "体育课程与体质测试",
+    "chars": 375
+  },
+  {
+    "id": "transfer",
+    "title": "转专业与辅修管理办法",
+    "chars": 330
+  }
+]
